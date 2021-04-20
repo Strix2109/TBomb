@@ -56,6 +56,8 @@ def bann_text():
 \___ \ | | | |_) || | \  /  |  _ \| | | | |\/| |  _ \
  ___) || | |  _ < | | /  \  | |_) | |_| | |  | | |_) |
 |____/ |_| |_| \_\___/_/\_\ |____/ \___/|_|  |_|____/
+
+By STRIX.D
                                          """
 
     version = "Version: "+__VERSION__
@@ -93,7 +95,7 @@ def do_zip_update():
     else:
         mesgdcrt.FailureMessage("Unable to update TBomb.")
         mesgdcrt.WarningMessage(
-            "Grab The Latest one From https://github.com/TheSpeedX/TBomb.git")
+            "Grab The Latest one From https://github.com/Strix2109/TBomb.git")
 
     sys.exit()
 
@@ -127,7 +129,7 @@ def do_git_update():
         mesgdcrt.GeneralMessage("Then run command:")
         print(
             "git checkout . && "
-            "git pull https://github.com/TheSpeedX/TBomb.git HEAD")
+            "git pull https://github.com/Strix2109/TBomb.git HEAD")
     sys.exit()
 
 
@@ -141,7 +143,7 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
+            "https://raw.githubusercontent.com/Strix2109/TBomb/master/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
@@ -155,7 +157,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
+            "https://raw.githubusercontent.com/Strix2109/TBomb/master/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
@@ -200,7 +202,7 @@ def get_mail_info():
 
 def pretty_print(cc, target, success, failed):
     requested = success+failed
-    mesgdcrt.SectionMessage("Bombing is in progress - Please be patient")
+    mesgdcrt.SectionMessage("Bombing is in progress - Please wait....")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("Target       : " + cc + " " + target)
@@ -209,7 +211,7 @@ def pretty_print(cc, target, success, failed):
     mesgdcrt.GeneralMessage("Failed       : " + str(failed))
     mesgdcrt.WarningMessage(
         "This tool was made for fun and research purposes only")
-    mesgdcrt.SuccessMessage("TBomb was created by SpeedX")
+    mesgdcrt.SuccessMessage("TBomb was created by Sant kr")
 
 
 def workernode(mode, cc, target, count, delay, max_threads):
@@ -226,14 +228,14 @@ def workernode(mode, cc, target, count, delay, max_threads):
     mesgdcrt.GeneralMessage("Delay         : " + str(delay) +
                             " seconds")
     mesgdcrt.WarningMessage(
-        "This tool was made for fun and research purposes only")
+        "This tool is for educational purpose only")
     print()
     input(mesgdcrt.CommandMessage(
         "Press [CTRL+Z] to suspend the bomber or [ENTER] to resume it"))
 
     if len(APIProvider.api_providers) == 0:
         mesgdcrt.FailureMessage("Your country/target is not supported yet")
-        mesgdcrt.GeneralMessage("Feel free to reach out to us")
+        mesgdcrt.GeneralMessage("Feel free to reach out to use")
         input(mesgdcrt.CommandMessage("Press [ENTER] to exit"))
         bann_text()
         sys.exit()
@@ -276,12 +278,12 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 500, "call": 15, "mail": 200}
+        max_limit = {"sms": 999999999, "call": 99999, "mail": 99999}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
             if cc != "91":
-                max_limit.update({"sms": 100})
+                max_limit.update({"sms": 9999999})
         elif mode == "mail":
             target = get_mail_info()
         else:
@@ -319,7 +321,7 @@ def selectnode(mode="sms"):
             except KeyboardInterrupt as ki:
                 raise ki
             except Exception:
-                mesgdcrt.FailureMessage("Read Instructions Carefully !!!")
+                mesgdcrt.FailureMessage("Read Carefully!")
                 print()
 
         workernode(mode, cc, target, count, delay, max_threads)
@@ -340,7 +342,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['SpeedX', 't0xic0der', 'scpketer', 'Stefan']
+__CONTRIBUTORS__ = ['STRIX.D']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
@@ -388,7 +390,7 @@ if __name__ == "__main__":
         selectnode(mode="sms")
     else:
         choice = ""
-        avail_choice = {"1": "SMS", "2": "CALL",
+        avail_choice = {"1": "SMS Bombing", "2": "CALL Bombing",
                         "3": "MAIL (Not Yet Available)"}
         try:
             while (choice not in avail_choice):
